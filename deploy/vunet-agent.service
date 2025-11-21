@@ -1,0 +1,21 @@
+[Unit]
+Description=VuNet Light Agent
+After=network.target
+
+[Service]
+Type=simple
+User=vunet
+Group=vunet
+WorkingDirectory=/opt/vunet
+Environment=AGENT_PORT=9001
+Environment=BACKEND_URL=http://localhost:8080/api/metrics
+ExecStart=/usr/bin/java -jar /opt/vunet/vu-light-agent-0.0.1-SNAPSHOT.jar
+Restart=always
+RestartSec=8
+StandardOutput=append:/var/log/vunet-agent/out.log
+StandardError=append:/var/log/vunet-agent/error.log
+
+[Install]
+WantedBy=multi-user.target
+
+

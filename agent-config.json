@@ -1,0 +1,6 @@
+{
+    "endpoint": "http://localhost:9001/metrics",
+    "intervalMs": 5000,
+    "collectors": ["cpu", "memory", "socket"],
+    "agentId": "local-dev"
+}

@@ -1,0 +1,21 @@
+﻿[
+  {
+     metricName: system.cpu.load,
+    value: 0.42,
+    timestamp: 1762852167623,
+    tags: {
+      host: local,
+      env: dev
+      
+    }
+  },
+  {
+    metricName: system.memory.used,
+    value: 134217728,
+    timestamp: 1762852167623,
+    tags: {
+      host: local,
+      env: dev
+    }
+  }
+]
