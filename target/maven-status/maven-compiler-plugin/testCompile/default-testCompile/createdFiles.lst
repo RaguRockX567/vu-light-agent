@@ -1,0 +1,3 @@
+com\vunet\agent\VuNetLightAgentApplicationTests.class
+com\vunet\agent\collector\CpuCollectorTest.class
+com\vunet\agent\sender\AsyncHttpMetricSenderTest.class

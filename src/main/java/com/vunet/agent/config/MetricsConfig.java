@@ -1,8 +1,6 @@
 package com.vunet.agent.config;
-
-import io.micrometer.core.instrument.MeterRegistry;
-import io.micrometer.core.instrument.binder.MeterBinder;
 import io.micrometer.core.instrument.Gauge;
+import io.micrometer.core.instrument.binder.MeterBinder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import java.lang.management.ManagementFactory;
@@ -23,13 +21,17 @@ public class MetricsConfig {
                 .register(registry);
                 
             Gauge.builder("system.memory.used", osBean, 
-                os -> (double)(os.getTotalMemorySize() - os.getFreeMemory()) / (1024 * 1024 * 1024))
+                os -> {
+                    long total = ((com.sun.management.OperatingSystemMXBean) os).getTotalMemorySize();
+                    long free = ((com.sun.management.OperatingSystemMXBean) os).getFreeMemorySize();
+                    return (double)(total - free) / (1024 * 1024 * 1024);
+                })
                 .description("Used Memory in GB")
                 .baseUnit("GB")
                 .register(registry);
                 
             Gauge.builder("system.memory.total", osBean, 
-                os -> (double)os.getTotalMemorySize() / (1024 * 1024 * 1024))
+                os -> (double)((com.sun.management.OperatingSystemMXBean) os).getTotalMemorySize() / (1024 * 1024 * 1024))
                 .description("Total Memory in GB")
                 .baseUnit("GB")
                 .register(registry);
@@ -37,7 +39,7 @@ public class MetricsConfig {
     }
     
     @Bean
-    public MeterBinder jvmMemoryMetrics() {
+    public MeterBinder customJvmMemoryMetrics() {
         return registry -> {
             Runtime runtime = Runtime.getRuntime();
             
