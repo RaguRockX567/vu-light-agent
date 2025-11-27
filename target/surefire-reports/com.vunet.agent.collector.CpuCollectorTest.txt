@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.vunet.agent.collector.CpuCollectorTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.725 s -- in com.vunet.agent.collector.CpuCollectorTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.868 s -- in com.vunet.agent.collector.CpuCollectorTest

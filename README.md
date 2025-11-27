@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # VuNet Light Agent
 
 Lightweight Spring Boot agent that collects metrics and forwards them to a backend. Includes Docker, Compose, and CI setup.
@@ -67,3 +68,6 @@ sudo systemctl enable --now vunet-agent
 Use the script `vu-light-agent/scripts/nssm-install.ps1` (run as Administrator).
 
 
+=======
+# vu-light-agent
+>>>>>>> c78575bf3a3856a6086ad29057f062719f98c980
